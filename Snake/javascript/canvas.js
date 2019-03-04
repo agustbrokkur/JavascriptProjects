@@ -2,7 +2,7 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 const scale = 10;
-const fps = 5
+const fps = 1;
 console.log(context);
 
 var snake;
@@ -19,20 +19,7 @@ var snake;
 }());
 
 window.addEventListener("keydown", ((even) => {
-  var direction = even.key;
+  var direction = even.key.replace("Arrow", "");
 
-  switch (direction) {
-    case "ArrowLeft":
-      snake.changeDir(-1, 0);
-      break;
-    case "ArrowRight":
-      snake.changeDir(1, 0);
-      break;
-    case "ArrowUp":
-      snake.changeDir(0, -1);
-      break;
-    case "ArrowDown":
-      snake.changeDir(0, 1);
-      break;
-  }
+  snake.changeDir(direction);
 }));
